@@ -39,12 +39,13 @@ def add_item():
         return jsonify({"error": "Invalid data"}), 400
 
 # Route to get all pantry items
-@app.route("/get-items", methods=["GET"])
+
+@app.route("/items", methods=["GET"])
 def get_items():
     return jsonify({"pantry": pantry})
 
 # Route to delete an item by name
-@app.route("/delete-item/<name>", methods=["DELETE"])
+@app.route("/remove-item/<name>", methods=["DELETE"])
 def delete_item(name):
     global pantry
     pantry = [item for item in pantry if item["name"] != name]
@@ -52,7 +53,6 @@ def delete_item(name):
 
 # Spoonacular API key
 API_KEY = "e75081b66b18488bbf5857d9bfaa3c5a"
-
 
 # Route to fetch recipes based on pantry ingredients
 @app.route("/get-recipes", methods=["GET"])
