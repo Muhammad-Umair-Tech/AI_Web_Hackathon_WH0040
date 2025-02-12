@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Pantry</title>
+    <style>
+        .recipe-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .recipe-card img {
+            max-width: 100px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Smart Pantry</h1>
+    
+    <h2>Add Item</h2>
+    <input type="text" id="itemName" placeholder="Item Name">
+    <input type="number" id="itemQuantity" placeholder="Quantity">
+    <input type="date" id="itemExpiration" placeholder="Expiration Date">
+    <button onclick="addItem()">Add Item</button>
+
+    <h2>Pantry List</h2>
+    <ul id="pantryList"></ul>
+
+    <h2>Recipe Suggestions</h2>
+    <button onclick="fetchRecipes()">Get Recipe Suggestions</button>
+    <div id="recipeList"></div>
+
+    <script>
+        // Function to add item
+        async function addItem() {
+            const name = document.getElementById("itemName").value;
+            const quantity = document.getElementById("itemQuantity").value;
+            const expirationDate = document.getElementById("itemExpiration").value;
+            await fetch("http://127.0.0.1:5000/add-item", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, quantity, expiration_date: expirationDate }),
+            });
+            fetchItems();
+        }
+
+        // Function to fetch pantry items
+        async function fetchItems() {
+            const response = await fetch("http://127.0.0.1:5000/get-items");
+            const data = await response.json();
+            const pantryList = document.getElementById("pantryList");
+            pantryList.innerHTML = "";
+            data.pantry.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - ${item.quantity} (${item.status})`;
+                pantryList.appendChild(li);
+            });
+        }
+
+        // Function to fetch recipe suggestions
+        async function fetchRecipes() {
+            try {
+                const response = await fetch("http://127.0.0.1:5000/get-recipes");
+                const data = await response.json();
+                const recipeList = document.getElementById("recipeList");
+                recipeList.innerHTML = "";
+
+                if (data.recipes && data.recipes.length > 0) {
+                    data.recipes.forEach(recipe => {
+                        const card = document.createElement("div");
+                        card.className = "recipe-card";
+                        card.innerHTML = `
+                            <h3>${recipe.title}</h3>
+                            <img src="${recipe.image}" alt="${recipe.title}">
+                            <p>Missing Ingredients: ${recipe.missedIngredientCount}</p>
+                        `;
+                        recipeList.appendChild(card);
+                    });
+                } else {
+                    recipeList.innerHTML = "<p>No recipes found.</p>";
+                }
+            } catch (error) {
+                console.error("Error fetching recipes:", error);
+            }
+        }
+
+        fetchItems();  // Load items on page load
+    </script>
+</body>
+</html>
