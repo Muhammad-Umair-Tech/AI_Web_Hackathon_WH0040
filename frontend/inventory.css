@@ -3,13 +3,13 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1e1e2e;
-    color: white;
+    background-color: white;
+    color:#1e1e2e;
 }
 
 /* Navbar */
 nav {
-    background-color:#2c3e50;
+    background-color:#4CAF50;
     padding-left: 3%;
     padding-right: 3%;
     display: flex;
@@ -20,6 +20,7 @@ nav {
     width: 94%;
     height: 70px;
 }
+
 
 .empty{
     height: 70px;
@@ -55,7 +56,7 @@ nav ul li a:hover, .active {
 
 /* Inventory Section */
 .inventory {
-    padding: 20px;
+    
     text-align: center;
 }
 
@@ -66,20 +67,22 @@ nav ul li a:hover, .active {
 
 /* Input Box */
 .input-box {
-    background: #252535;
-    padding: 15px;
+    background: white;
+    padding: 2px;
     border-radius: 8px;
     margin: 15px auto;
     width: 60%;
     display: flex;
     justify-content: center;
     gap: 10px;
+    border-color: #1e1e2e;
+    border-radius: 1px;
 }
 
 .input-box input {
     padding: 10px;
     width: 30%;
-    border: none;
+    border: default;
     border-radius: 5px;
     outline: none;
 }
