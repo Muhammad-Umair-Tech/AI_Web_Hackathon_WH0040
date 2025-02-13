@@ -3,216 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Pantry - Inventory</title>
+    <title>Smart Pantry - Home</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
     <style>
-        /* Inventory Section */
-.inventory {
-    padding: 20px;
-    text-align: center;
-}
-
-.inventory h2 {
-    color: var(--fresh-green);
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-/* Input Box */
-/* .input-box {
-    background: #252535;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px auto;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+        /* #notificationPopup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 } */
-.input-box {
-    background: var(--warm-beige); /* Soft background */
-    padding: 15px;
-    border-radius: 10px;
-    margin: 15px auto;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+#notificationPopup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--forest-green); /* Green to match header */
+    color: var(--soft-white);
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.hidden {
+    display: none;
+}
+/* Home Content */
+.home-content {
+    text-align: center;
+    padding: 50px;
+}
+
+/* .home-content h2 {
+    font-size: 32px;
+    color: var(--bright-yellow);
+} */
+.home-content h2 {
+    font-size: 32px;
+    color: var(--forest-green); /* More natural look */
+    font-weight: bold;
 }
 /* 
-.input-box input {
-    padding: 10px;
-    width: 30%;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-} */
-.input-box input {
-    padding: 12px;
-    width: 30%;
-    border: 2px solid var(--forest-green); /* Matches theme */
-    border-radius: 6px;
-    outline: none;
-    background: var(--soft-white);
-    color: var(--cool-gray);
-    font-size: 16px;
-}
-
-
-/* Buttons */
-/* button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-} */
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s ease-in-out, transform 0.2s;
-}
-
-button i {
-    margin-left: 5px;
-}
-
-/* .view-btn {
-    background: #007bff;
-    color: white;
-    margin-top: 10px;
-}
-
-.view-btn:hover {
-    background: #0056b3;
-} */
-.view-btn {
-    background: var(--forest-green); /* Matches theme */
+.home-content p {
+    font-size: 18px;
     color: var(--soft-white);
-    margin-top: 10px;
-    border-radius: 8px;
-}
-.view-btn:hover {
-    background: var(--bright-yellow);
-    color: black;
-}
-
-/* .remove-btn {
-    background: #ff4747;
-    color: white;
-}
-
-.remove-btn:hover {
-    background: #d32f2f;
+    max-width: 600px;
+    margin: 0 auto;
 } */
-.remove-btn {
-    background: var(--soft-orange); /* Warmer orange */
-    color: var(--soft-white);
-}
-.remove-btn:hover {
-    background: var(--bright-yellow);
-    color: black;
+.home-content p {
+    font-size: 18px;
+    color: var(--cool-gray); /* Softer readability */
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-/* Inventory List */
-/* .inventory-list {
-    margin-top: 20px;
+/* Stats Section */
+.stats {
+    /* 
+    justify-content: space-around;
+    margin: 40px 0;
+    display: flex; */
     display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    flex-direction: row;
+    gap: 124px;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-} */
-.inventory-list {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive */
-    gap: 20px;
-    justify-content: center;
+    align-content: space-between;
 }
-
-.item-card {
-    background: var(--soft-white);
-    padding: 15px;
-    border-radius: 10px;
-    width: 200px;
+.stat-box {
+    display: flex;
+    justify-content: space-between;
+    background: var(--fresh-green);
+    color: white;
+    padding: 20px;
+    min-width: 180px;
+    min-height: 150px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    transition: transform 0.2s ease-in-out;
+    border-radius: 10px;
+    flex-direction: column;
 }
-.item-card:hover {
-    transform: scale(1.03);
-}
-
-/* .item-card h3 {
-    margin: 5px 0;
-    } */
-    .item-card h3 {
-        margin: 5px 0;
-        color: var(--fresh-green);
-    font-size: 20px;
-    font-weight: bold;
-}
-
-
-/* .item-card p {
-    font-size: 14px;
-    color: var(--cool-gray);
+/* .stat-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--forest-green); 
+    color: var(--soft-white);
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 } */
-.item-card p {
-    font-size: 16px;
-    color: var(--earthy-brown); /* Warmer and easy on the eyes */
+.stat-box:hover {
+    transform: translateY(-5px);
 }
 
+/* .stat-box a {
+    color: var(--bright-yellow);
+} */
+.stat-box a {
+    color: var(--bright-yellow);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.stat-box a:hover {
+    color: var(--soft-orange); /* Warmer hover effect */
+}
 
+.stat-box h2 {
+    color: var(--bright-yellow);
+    font-size: 2em;
+    transition: transform 0.5s;
+}
+.stat-box:hover h2 {
+    transform: scale(1.2);
+}
     </style>
-</head>
 <body>
-
     <div class="container">
         <nav>
             <h1>Smart Pantry</h1>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="inventory.html" class="active">Inventory</a></li>
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
                 <li><a href="recipes.html">Recipes</a></li>
                 <li><a href="notifications.html">Notifications</a></li>
             </ul>
+            
         </nav>
         <div class="empty"></div>
+        
+
         <header class="banner">
             <div class="overlay">
-                <h1 class="title">Smart Kitchen</h1>
-                <p class="subtitle">Your Intelligent Cooking Assistant</p>
+                <h1 class="title">Welcome to Smart Pantry</h1>
+                <p class="subtitle">Your Intelligent Kitchen Management System</p>
+                
             </div>
         </header>
-
-        <section class="inventory">
-            <h2>Pantry Inventory</h2>
-
-            <div class="input-box">
-                <input type="text" id="itemName" placeholder="Item Name">
-                <input type="number" id="itemQuantity" placeholder="Quantity">
-                <input type="date" id="expiryDate" placeholder="Expiry date">
-                <button onclick="addItem()">Add Item <i class="fas fa-plus"></i></button>
-            </div>
-
-            <div class="input-box">
-                <input type="text" id="removeName" placeholder="Item Name to Remove">
-                <button onclick="removeItem()" class="remove-btn">Remove Item <i class="fas fa-trash"></i></button>
-            </div>
-
-            <button class="view-btn" onclick="fetchItems()">View All Items <i class="fas fa-list"></i></button>
-
-            <div class="inventory-list" id="inventoryList">
-                <!-- Items will be dynamically displayed here -->
-            </div>
+        <section class="home-content">
+            <h2 style = "color: var(--fresh-green)">Manage Your Kitchen Smartly</h2>
+            <p  style = "color: var(--cool-gray)" >Track your inventory, get recipe recommendations, and receive timely notifications about your pantry.</p>
+            <section class="stats">
+                <div class="stat-box">
+                    <h2 id="recipesCount">0+</h2>
+                    <p>Recipes Available</p>
+                    <a href="recipes.html">see more</a>
+                </div>
+                <div class="stat-box">
+                    <h2 id="inventoryCount">0+</h2>
+                    <p>Items in Inventory</p>
+                    <a href="inventory.html">see more</a>
+                </div>
+                <div class="stat-box">
+                    <h2 id="notificationsCount">0+</h2>
+                    <p>Notifications</p>
+                    <a href="notifications.html">see more</a>
+                </div>
+                <div class="stat-box">
+                    <h2 id="usersCount">0+</h2>
+                    <p>Users Registered</p>
+                </div>
+            </section>
+            
+        
         </section>
     </div>
     <footer>
@@ -221,7 +187,7 @@ button i {
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="home.html">Home</a></li>
                     <li><a href="inventory.html">Inventory</a></li>
                     <li><a href="recipes.html">Recipes</a></li>
                     <li><a href="notifications.html">Notifications</a></li>
@@ -260,75 +226,59 @@ button i {
         <!-- Copyright Section -->
         <div class="copyright">
             <p>&copy; 2023 Smart Pantry. All rights reserved.</p>
+            <div id="notificationPopup" class="hidden">
+                <p>🔔 New feature added! Try the Dark Mode toggle.</p>
+                <button onclick="closeNotification()">Close</button>
+            </div>
+            
         </div>
     </footer>
-
     <script>
+        // Home Page JavaScript
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Home Page Loaded Successfully");
 
-const API_URL = "http://127.0.0.1:5000";
+    // Example: Adding an event listener for the newsletter subscription form
+    const newsletterForm = document.querySelector(".newsletter-form");
 
-// Function to add an item
-async function addItem() {
-    let name = document.getElementById("itemName").value;
-    let quantity = document.getElementById("itemQuantity").value;
-    let expiry = document.getElementById("expiryDate").value;
-
-    if (!name || !quantity || !expiry) {
-        alert("Please fill all fields.");
-        return;
+    if (newsletterForm) {
+        newsletterForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+            const emailInput = newsletterForm.querySelector("input[type='email']");
+            
+            if (emailInput.value.trim() !== "") {
+                alert("Thank you for subscribing!");
+                emailInput.value = ""; // Clear input field
+            } else {
+                alert("Please enter a valid email address.");
+            }
+        });
     }
+});
 
-    let response = await fetch(`${API_URL}/add-item`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, quantity, expiration_date: expiry })
-    });
-
-    let result = await response.json();
-    alert(result.message);
-    fetchItems();
+// Animated Stats Counter
+function animateValue(id, start, end, duration) {
+    let obj = document.getElementById(id);
+    let range = end - start;
+    let increment = range / (duration / 50);
+    let current = start;
+    let timer = setInterval(function () {
+        current += increment;
+        obj.innerText = Math.floor(current) + "+";
+        if (current >= end) {
+            obj.innerText = end + "+";
+            clearInterval(timer);
+        }
+    }, 50);
 }
 
-// Function to remove an item
-async function removeItem() {
-    let name = document.getElementById("removeName").value;
+window.onload = function () {
+    animateValue("recipesCount", 0, 150, 2000);
+    animateValue("inventoryCount", 0, 80, 2000);
+    animateValue("usersCount", 0, 500, 2000);
+    animateValue("notificationsCount", 0, 20, 2000);
+};
 
-    if (!name) {
-        alert("Enter an item name to remove.");
-        return;
-    }
-
-    let response = await fetch(`${API_URL}/remove-item/${name}`, {
-        method: "DELETE"
-    });
-
-    let result = await response.json();
-    alert(result.message);
-    fetchItems();
-}
-
-// Function to fetch and display items
-async function fetchItems() {
-    let response = await fetch(`${API_URL}/items`);
-    let data = await response.json();
-    let items = data.pantry;
-    
-    let inventoryList = document.getElementById("inventoryList");
-    inventoryList.innerHTML = "";
-
-    items.forEach(item => {
-        let card = `<div class="item-card">
-            <h3>${item.name}</h3>
-            <p>Quantity: ${item.quantity}</p>
-            <p>Expiry: ${item.expiration_date}</p>
-            <p>Status: ${item.status}</p>
-        </div>`;
-        inventoryList.innerHTML += card;
-    });
-}
-
-// Fetch items on page load
-fetchItems();
     </script>
 </body>
 </html>

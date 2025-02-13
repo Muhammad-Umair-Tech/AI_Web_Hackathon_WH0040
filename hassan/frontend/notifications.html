@@ -1,17 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="notifications.css">
+  <link rel="stylesheet" href="styles.css">
 <title>Expiration Notifications</title>
 <style>
- 
+ /* #notifications {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 50px;
+} */
+#notifications {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* More compact */
+    gap: 20px;
+    justify-content: center;
+    padding: 40px;
+    max-width: 1000px;
+    margin: auto;
+}
+/* 
+.notification {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    justify-content: center;
+} */
+.notification {
+    border: 2px solid var(--forest-green); /* Green border */
+    padding: 18px;
+    border-radius: 12px;
+    background-color: var(--warm-beige); /* Softer background */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.notification:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* .notification h2 {
+    margin-top: 0;
+    color: #1e1e2e;
+} */
+.notification h2 {
+    margin-top: 0;
+    color: var(--forest-green); 
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* .notification p{
+    color: #1e1e2e;
+} */
+.notification p {
+    color: var(--earthy-brown); /* Warmer tone */
+    font-size: 16px;
+    text-align: center;
+}
+
+/* .warning {
+    color: red; 
+} */
+.warning {
+    color: var(--soft-orange); /* Warmer warning color */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* #no-notifications {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+} */
+#no-notifications {
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--cool-gray);
+    padding: 20px;
+}
+
+/* .notification:hover{
+    transform: scale(0.95);
+    opacity: 0.9;
+} */
 </style>
 </head>
 <body>
     <nav>
         <h1>Smart Pantry</h1>
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="home.html">Home</a></li>
             <li><a href="inventory.html">Inventory</a></li>
             <li><a href="recipes.html">Recipes</a></li>
             <li><a href="notifications.html" class = "active">Notifications</a></li>
