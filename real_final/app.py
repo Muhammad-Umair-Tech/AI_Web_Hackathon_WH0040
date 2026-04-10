@@ -80,7 +80,7 @@ def delete_item(name):
 # Spoonacular API key
 # API_KEY = "e75081b66b18488bbf5857d9bfaa3c5a"
 
-API_KEY = "20b351790d7643e9ac56a7a65ea9e71e"
+API_KEY = ""
 
 # Route to fetch recipes based on pantry ingredients
 @app.route("/get-recipes", methods=["GET"])
