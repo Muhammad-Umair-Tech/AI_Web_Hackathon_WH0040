@@ -51,8 +51,7 @@
 #     pantry = [item for item in pantry if item["name"] != name]
 #     return jsonify({"message": f"Item {name} deleted!", "pantry": pantry})
 
-# # Spoonacular API key
-# API_KEY = "e75081b66b18488bbf5857d9bfaa3c5a"
+# Spoonacular API key
 
 # # Route to fetch recipes based on pantry ingredients
 # @app.route("/get-recipes", methods=["GET"])
@@ -162,7 +161,7 @@ def delete_item(name):
         return jsonify({"error": str(e)}), 500
 
 # Spoonacular API key
-API_KEY = "e75081b66b18488bbf5857d9bfaa3c5a"
+API_KEY = ""
 
 # Route to fetch recipes based on pantry ingredients
 @app.route("/get-recipes", methods=["GET"])
