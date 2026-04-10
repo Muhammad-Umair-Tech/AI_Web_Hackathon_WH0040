@@ -76,9 +76,7 @@ def delete_item(name):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Spoonacular API key
-# API_KEY = "e75081b66b18488bbf5857d9bfaa3c5a"
-
+# Spoonacular API
 API_KEY = ""
 
 # Route to fetch recipes based on pantry ingredients
