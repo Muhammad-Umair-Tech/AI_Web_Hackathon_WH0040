@@ -6,10 +6,10 @@
 # app = Flask(__name__)
 # CORS(app)  # Enable CORS for frontend-backend communication
 
-# # Temporary storage for pantry items
+# Temporary storage for pantry items
 # pantry = []
 
-# # Helper function to check expiration alerts
+# Helper function to check expiration alerts
 # def check_expiration(item):
 #     expiration_date = datetime.strptime(item["expiration_date"], "%Y-%m-%d")
 #     if datetime.now() > expiration_date:
@@ -52,7 +52,6 @@
 #     return jsonify({"message": f"Item {name} deleted!", "pantry": pantry})
 
 # # Spoonacular API key
-# API_KEY = "e75081b66b18488bbf5857d9bfaa3c5a"
 
 # # Route to fetch recipes based on pantry ingredients
 # @app.route("/get-recipes", methods=["GET"])
@@ -162,7 +161,7 @@ def delete_item(name):
         return jsonify({"error": str(e)}), 500
 
 # Spoonacular API key
-API_KEY = "e75081b66b18488bbf5857d9bfaa3c5a"
+API_KEY = ""
 
 # Route to fetch recipes based on pantry ingredients
 @app.route("/get-recipes", methods=["GET"])
